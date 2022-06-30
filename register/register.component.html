@@ -1,0 +1,69 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12" style="margin-top: 20px">
+            <mat-card style="margin: 50px 0">
+
+
+                <form class="form_register" #f="ngForm" (ngSubmit)="f.form.valid &&ngSubmit()" novalidate>
+                    <mat-error class="alert alert-primary">{{status}}</mat-error>
+                    <!--                NAME-->
+                    <mat-form-field appearance="outline" style="width: 350px">
+                        <mat-label>Name</mat-label>
+                        <input matInput placeholder="Enter your name" name="name" [(ngModel)]="form.name"
+                               #name="ngModel" minlength="3" maxlength="50" required>
+                        <mat-icon color="primary" matSuffix>account_circle</mat-icon>
+                        <mat-error *ngIf="name.hasError('required')">The name is required!</mat-error>
+                        <mat-error *ngIf="name.hasError('minlength')">The name is at least 3 characters!</mat-error>
+                        <mat-error *ngIf="name.hasError('maxlength')">The name is max of 50 characters!</mat-error>
+                    </mat-form-field>
+                    <br>
+
+                    <!--                USERNAME-->
+                    <mat-form-field appearance="outline" style="width: 350px">
+                        <mat-label>Username</mat-label>
+                        <input matInput placeholder="Enter your username" name="username" [(ngModel)]="form.username"
+                               #username="ngModel" minlength="3" maxlength="50" required>
+                        <mat-icon color="primary" matSuffix>account_circle</mat-icon>
+                        <mat-error *ngIf="username.hasError('required')">The username is required!</mat-error>
+                        <mat-error *ngIf="username.hasError('minlength')">The username is at least 3 characters!
+                        </mat-error>
+                        <mat-error *ngIf="username.hasError('maxlength')">The username is max of 50 characters!
+                        </mat-error>
+                    </mat-form-field>
+                    <br>
+
+
+                    <!--                EMAIL-->
+                    <mat-form-field appearance="outline" style="width: 350px">
+                        <mat-label>Email</mat-label>
+                        <input matInput placeholder="Enter your email" name="email" [(ngModel)]="form.email"
+                               [formControl]="emailFormControl" required>
+                        <mat-icon color="primary" matSuffix>mail</mat-icon>
+                        <mat-error *ngIf="emailFormControl.hasError('required')">The email is required!</mat-error>
+                        <mat-error *ngIf="emailFormControl.hasError('email')">Not an email, try again!</mat-error>
+                    </mat-form-field>
+                    <br>
+                    <!--                    PASSWORD-->
+
+                    <mat-form-field appearance="fill" style="width: 350px">
+                        <mat-label>Enter your password</mat-label>
+                        <input name="password" [(ngModel)]="form.password" #password="ngModel" matInput
+                               [type]="hide ? 'password' : 'text'" required minlength="6" maxlength="10">
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                                [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                        <mat-error *ngIf="password.hasError('required')">The password is required!</mat-error>
+                        <mat-error *ngIf="password.hasError('minlength')">The password is at least 6 characters
+                            length!!
+                        </mat-error>
+                        <mat-error *ngIf="password.hasError('maxlength')">The password is max of 10 character!!
+                        </mat-error>
+                    </mat-form-field>
+                    <br>
+                    <button mat-stroked-button color="primary">Register </button>
+                </form>
+            </mat-card>
+        </div>
+    </div>
+</div>

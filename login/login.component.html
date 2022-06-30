@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12" style="margin-top: 20px">
+            <mat-card style="margin: 50px 0">
+                <form class="form_login" #f="ngForm" (ngSubmit)="f.form.valid&&ngSubmit()" novalidate
+                      style="text-align: center">
+
+                    <!--                    USER_NAME-->
+                    <mat-error class="alert alert-primary">{{status}}</mat-error>
+                    <mat-form-field appearance="outline" style="width: 350px">
+                        <mat-label>Username</mat-label>
+                        <input matInput placeholder="Input your username" name="username" #username="ngModel"
+                               [(ngModel)]="form.username" minlength="3" maxlength="50" required>
+                        <mat-icon matSuffix>account_circle</mat-icon>
+                        <mat-error *ngIf="username.hasError('minlength')">Username has at least 3 characters!
+                        </mat-error>
+                        <mat-error *ngIf="username.hasError('required')">Username cannot be empty!</mat-error>
+                    </mat-form-field>
+                    <br>
+
+                    <!--                    PASSWORD-->
+                    <mat-form-field appearance="fill" style="width: 350px">
+                        <mat-label>Enter your password</mat-label>
+                        <input name="password" [(ngModel)]="form.password" #password="ngModel" matInput
+                               [type]="hide ? 'password' : 'text'" required minlength="6" maxlength="10">
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                                [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                        <mat-error *ngIf="password.hasError('required')">The password is required!</mat-error>
+                        <mat-error *ngIf="password.hasError('minlength')">The password is at least 6 characters
+                            length!!
+                        </mat-error>
+                        <mat-error *ngIf="password.hasError('maxlength')">The password is max of 10 character!!
+                        </mat-error>
+                    </mat-form-field>
+                    <br>
+                    <button mat-stroked-button color="primary">Login <mat-icon>login</mat-icon></button>
+                </form>
+            </mat-card>
+        </div>
+    </div>
+</div>
