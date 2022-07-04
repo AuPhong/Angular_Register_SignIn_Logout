@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12" style="margin-top: 20px">
+            <mat-card style="margin: 50px 0">
+                <div class="change-avatar">
+                    <mat-error class="alert alert-primary">{{status}}</mat-error>
+                    <br><br>
+                    <app-upload-avatar (giveURLtoCreate)="onLoadAvatar($event)"></app-upload-avatar>
+                    <form class="change-avatar" (ngSubmit)="onSubmit()">
+                        <button mat-stroked-button color="primary">Change avatar
+                            <mat-icon matSuffix>upload</mat-icon>
+                        </button>
+                    </form>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+</div>

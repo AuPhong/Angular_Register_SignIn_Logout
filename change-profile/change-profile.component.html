@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12" style="margin-top: 20px">
+            <mat-card style="margin: 50px 0">
+                <form #f1 = 'ngForm' class="form-changeProfile" style="text-align: center" (ngSubmit)="f1.form.valid&&changeProfile()" novalidate>
+                    <mat-form-field appearance="outline" style="width: 350px">
+                        <mat-label>Name</mat-label>
+                        <input matInput placeholder="Enter your name" name="name" required minlength="3" maxlength="50"
+                               #name="ngModel" [(ngModel)]="form1.name">
+                        <mat-icon matSuffix>account_circle</mat-icon>
+                        <mat-error *ngIf="name.hasError('required')">Name is required!</mat-error>
+                        <mat-error *ngIf="name.hasError('minlength')">Name has at least 3 characters long!</mat-error>
+                    </mat-form-field>
+                    <br>
+
+                    <!--                    USER NAME-->
+                    <mat-form-field appearance="outline" style="width: 350px">
+                        <mat-label>Username</mat-label>
+                        <input matInput placeholder="Enter your username" name="username" required minlength="3"
+                               maxlength="50" [(ngModel)]="form1.username" #username='ngModel'>
+                        <mat-icon matSuffix>account_circle</mat-icon>
+                        <mat-error *ngIf="username.hasError('required')">Username is required!</mat-error>
+                        <mat-error *ngIf="username.hasError('minlength')">Username has at least 3 characters long!
+                        </mat-error>
+                    </mat-form-field>
+                    <br>
+
+                    <!--                    EMAIL -->
+                    <mat-form-field appearance="outline" style="width: 350px">
+                        <mat-label>Email</mat-label>
+                        <input matInput placeholder="Enter your email" name="email" required [(ngModel)]="form1.email"
+                               [formControl]="emailFormControl">
+                        <mat-icon matSuffix>account_circle</mat-icon>
+                        <mat-error *ngIf="emailFormControl.hasError('required')">Email is required!</mat-error>
+                        <mat-error *ngIf="emailFormControl.hasError('email')">Wrong email pattern!</mat-error>
+                    </mat-form-field>
+                    <br>
+                    <button mat-stroked-button color="primary">Change profile
+                        <mat-icon matSuffix>update</mat-icon>
+                    </button>
+                </form>
+            </mat-card>
+        </div>
+    </div>
+</div>
